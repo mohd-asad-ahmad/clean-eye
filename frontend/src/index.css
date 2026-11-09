@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body { @apply bg-forest-50 text-forest-900 dark:bg-forest-950 dark:text-forest-50 font-sans antialiased transition-colors duration-300; }
+  h1, h2, h3 { @apply font-display tracking-tight; }
+  :focus-visible { @apply outline outline-2 outline-offset-2 outline-sun-400; }
+}
+
+/* Map: dark tiles + popup theming */
+.dark .leaflet-tile-pane { filter: invert(1) hue-rotate(180deg) brightness(.85) contrast(.9) saturate(.7); }
+.dark .leaflet-popup-content-wrapper, .dark .leaflet-popup-tip { background: #122b1d; color: #eef5ee; }
+.leaflet-popup-content { margin: 12px; }
+
+/* Pins */
+.pin { display: block; width: 20px; height: 20px; border-radius: 9999px; border: 3px solid #fff; box-shadow: 0 1px 5px rgba(0,0,0,.45); }
+.pin--high { background: #dc2626; animation: ring 2s infinite; }
+.pin--mid { background: #f59e0b; }
+.pin--low { background: #84cc16; }
+.pin--done { background: #2f6739; }
+@keyframes ring { 0% { box-shadow: 0 0 0 0 rgba(220,38,38,.55); } 70% { box-shadow: 0 0 0 12px rgba(220,38,38,0); } 100% { box-shadow: 0 0 0 0 rgba(220,38,38,0); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
